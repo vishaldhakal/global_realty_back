@@ -153,11 +153,11 @@ SUMMERNOTE_CONFIG = {
 }
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Homebaba Admin",
-    "site_header": "Homebaba",
-    "site_brand": "Homebaba",
-    "welcome_sign": "Welcome to the Homebaba Admin",
-    "copyright": "Homebaba",
+    "site_title": "Globalhomes Admin",
+    "site_header": "Globalhomes",
+    "site_brand": "Globalhomes",
+    "welcome_sign": "Welcome to the Globalhomes Admin",
+    "copyright": "Globalhomes",
     "search_model": [],
     # Field name on user model that contains avatar FileField/URLField/Charfield or a callable that receives the user
     "user_avatar": None,
