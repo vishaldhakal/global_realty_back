@@ -201,7 +201,7 @@ JAZZMIN_SETTINGS = {
 
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp-relay.brevo.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'condomonk9@gmail.com'
-EMAIL_HOST_PASSWORD = 'Hn3j9RzEU2kVbhX6'
+EMAIL_HOST = 'smtp.elasticemail.com'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = 'info@globalhomes.ca'
+EMAIL_HOST_PASSWORD = '17E2E409133BA4705952BA80BD0E627D7944'
