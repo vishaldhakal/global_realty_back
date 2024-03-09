@@ -401,7 +401,7 @@ def ContactFormSubmission(request):
     if request.method == "POST":
         subject = "Global Homes Inquiry about " + \
             request.POST["proj_name"]+" in " + \
-            request.POST["cityy"]+" - Condomonk"
+            request.POST["cityy"]
         emaill = "Global Homes <info@globalhomes.ca>"
         headers = {'Reply-To': request.POST["email"]}
 
