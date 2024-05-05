@@ -21,6 +21,16 @@ from .serializers import *
 from django.utils.text import slugify
 
 
+@api_view(['GET'])
+def get_all_precons_search(request):
+    precons = PreConstruction.objects.all()
+    serializer = PreConstructionSearchSerializer2(precons, many=True)
+
+    cities = City.objects.all()
+    serializer2 = CitySerializerSmall(cities,many=True)
+
+    return Response({"projects": serializer.data, "cities": serializer2.data})
+
 class DeveloperListCreateView(generics.ListCreateAPIView):
     queryset = Developer.objects.all()
     serializer_class = DeveloperSerializer
@@ -428,4 +438,4 @@ def ContactFormSubmission(request):
             return HttpResponse("Sucess")
     else:
         return HttpResponse("Not post req")
-    
+
