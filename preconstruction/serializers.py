@@ -56,7 +56,7 @@ class PreConstructionSerializerSmall(serializers.ModelSerializer):
     class Meta:
         model = PreConstruction
         fields = '__all__'
-        ordering = ['last_updated']
+        ordering = ['-status','last_updated']
 
 class CitySerializerSmallestt(serializers.ModelSerializer):
     class Meta:
