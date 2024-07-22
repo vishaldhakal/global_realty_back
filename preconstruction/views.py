@@ -439,3 +439,8 @@ def ContactFormSubmission(request):
     else:
         return HttpResponse("Not post req")
 
+@api_view(['GET'])
+def news_detail(request, slug):
+    news = News.objects.get(slug=slug)
+    serializer = NewsSerializer(news)
+    return Response(serializer.data)
