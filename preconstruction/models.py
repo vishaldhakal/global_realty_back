@@ -9,6 +9,7 @@ from django.dispatch import receiver
 class Developer(models.Model):
     image = models.FileField()
     name = models.CharField(max_length=500)
+    slug = models.SlugField(max_length=520, unique=True, blank=True)
     phone = models.CharField(max_length=200, blank=True)
     website_link = models.TextField(blank=True)
     details = models.TextField()
@@ -18,6 +19,23 @@ class Developer(models.Model):
 
     class Meta:
         ordering = ['name']
+
+def generate_unique_slug(instance, slug_field, new_slug=None):
+    if new_slug is not None:
+        slug = new_slug
+    else:
+        slug = slugify(instance.name)
+
+    qs = Developer.objects.filter(**{slug_field: slug}).exclude(id=instance.id)
+    if qs.exists():
+        new_slug = f"{slug}-{qs.count() + 1}"
+        return generate_unique_slug(instance, slug_field, new_slug)
+    return slug
+
+@receiver(pre_save, sender=Developer)
+def pre_save_developer(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = generate_unique_slug(instance, 'slug')
 
 
 class City(models.Model):
