@@ -35,23 +35,24 @@ class DeveloperListCreateView(generics.ListCreateAPIView):
     queryset = Developer.objects.all()
     serializer_class = DeveloperSerializer
 
-    def list(self, request, *args, **kwargs):
-        filtered_developers = Developer.objects.filter(name__in=[
-            'Cachet Homes',
-            'Paradise Developments',
-            'Branthaven',
-            'DECO homes',
-            'Fusion Homes',
-            'National Homes',
-            'Great Gulf',
-            'Adi Development',
-            'RoseHaven Homes',
-            'City Park Homes',
-            'Brixen Developments',
-            'Royalpark Homes'
-        ])
-        serializer = DeveloperSerializer(filtered_developers, many=True)
-        return Response(serializer.data)
+@api_view(['GET'])
+def FilteredDevelopers(request):
+    filtered_developers = Developer.objects.filter(name__in=[
+        'Cachet Homes',
+        'Paradise Developments',
+        'Branthaven',
+        'DECO homes',
+        'Fusion Homes',
+        'National Homes',
+        'Great Gulf',
+        'Adi Development',
+        'RoseHaven Homes',
+        'City Park Homes',
+        'Brixen Developments',
+        'Royalpark Homes'
+    ])
+    serializer = DeveloperSerializer(filtered_developers, many=True)
+    return Response(serializer.data)
 
 @api_view(['GET'])
 def PreConstructionsDeveloper(request, slug):

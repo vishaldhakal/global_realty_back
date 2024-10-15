@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from .views import ContactFormSubmission,get_all_precons_search,DeveloperListCreateView, DeveloperRetrieveUpdateDeleteView, PreConstructionListCreateView, PreConstructionRetrieveUpdateDeleteView, EventListCreateView, EventRetrieveUpdateDeleteView, NewsListCreateView, NewsRetrieveUpdateDeleteView, FavouriteListCreateView, FavouriteRetrieveUpdateDeleteView, CityListCreateView, CityRetrieveUpdateDeleteView, PreConstructionDetailView, PreConstructionsCityView, delete_image, delete_floorplan, remove_last_part_of_slug, get_all_city, get_related_precons,news_detail,PreConstructionsDeveloper
+from .views import ContactFormSubmission,get_all_precons_search,DeveloperListCreateView, DeveloperRetrieveUpdateDeleteView, PreConstructionListCreateView, PreConstructionRetrieveUpdateDeleteView, EventListCreateView, EventRetrieveUpdateDeleteView, NewsListCreateView, NewsRetrieveUpdateDeleteView, FavouriteListCreateView, FavouriteRetrieveUpdateDeleteView, CityListCreateView, CityRetrieveUpdateDeleteView, PreConstructionDetailView, PreConstructionsCityView, delete_image, delete_floorplan, remove_last_part_of_slug, get_all_city, get_related_precons,news_detail,PreConstructionsDeveloper,FilteredDevelopers
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -21,7 +21,8 @@ urlpatterns = [
          cache_timeout=0), name='schema-swagger-ui'),
     path('developers/', DeveloperListCreateView.as_view(),
          name='developer-list-create'),
-    path('developers/<int:pk>/', DeveloperRetrieveUpdateDeleteView.as_view(),
+    path('developers/<str:slug>/', DeveloperRetrieveUpdateDeleteView.as_view(),
+    path('developers-filter/', FilteredDevelopers,name='developer-filter'),
          name='developer-retrieve-update-delete'),
     path('preconstructions/', PreConstructionListCreateView.as_view(),
          name='preconstruction-list-create'),
